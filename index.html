@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carma | Портфолио</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">CARMA</a>
+            <div class="nav-menu">
+                <a href="#about">О НАС</a>
+                <a href="#portfolio">ПОРТФОЛИО</a>
+                <a href="#contact">КОНТАКТЫ</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-container">
+            <h1 class="hero-title">Carma<br></h1>
+            <p class="hero-subtitle">Создаём элегантные веб-решения,<br>объединяющие эстетику высокой моды<br>с передовыми технологиями</p>
+            <div class="hero-scroll">
+                <span>Листайте вниз</span>
+                <div class="scroll-indicator"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="about-title">Ремесло<br><em>Совершенства</em></h2>
+                <div class="about-text">
+                    <p>Мы создаём исключительные цифровые решения для всех видов бизнесов. Наша философия основана на внимании к деталям, элегантности в каждом пикселе и стремлении к технологическому совершенству.</p>
+                    <p>Специализируемся на разработке премиальных веб-сайтов для индустрий моды, финтеха, e-commerce и healthcare, где каждый проект становится произведением искусства.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="portfolio-title">Избранные<br><em>Работы</em></h2>
+
+            <div class="portfolio-grid">
+                <!-- Caesar Watches -->
+                <article class="project-card" data-category="E-commerce">
+                    <div class="project-image">
+                        <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/88ccb13c-096f-4604-b60a-b57509302771.png" alt="Caesar Watches" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="https://staging.caesarwatches.com/ru/services/watch-buyback" target="_blank" class="project-link">ПОСМОТРЕТЬ</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">E-commerce</span>
+                        <h3 class="project-name">Caesar Watches</h3>
+                        <p class="project-description">Элитный салон часов и ювелирных изделий. Премиальная e-commerce платформа с услугами выкупа швейцарских часов и профессиональной оценки.</p>
+                    </div>
+                </article>
+
+                <!-- Devim Team -->
+                <article class="project-card" data-category="Corporate">
+                    <div class="project-image">
+                        <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/5a1e94a3-4a66-40e6-b278-62e453072937.png" alt="Devim Team" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="https://devim.team/" target="_blank" class="project-link">ПОСМОТРЕТЬ</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Corporate</span>
+                        <h3 class="project-name">Devim Team</h3>
+                        <p class="project-description">Компания финтех-разработки с 7+ годами опыта. Современный корпоративный сайт, демонстрирующий экспертизу в области финансовых технологий.</p>
+                    </div>
+                </article>
+
+                <!-- Folklorica -->
+                <article class="project-card" data-category="Fashion">
+                    <div class="project-image">
+                        <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/2f56b667-02e7-4147-a423-7f79da9781c0.png" alt="Folklorica" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="https://folklorica.ru/" target="_blank" class="project-link">ПОСМОТРЕТЬ</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Fashion</span>
+                        <h3 class="project-name">Folklorica</h3>
+                        <p class="project-description">Бренд русской фольклорной одежды, сохраняющий культурное наследие через моду. Каталог с историями культурного наследия.</p>
+                    </div>
+                </article>
+
+                <!-- 1811stores -->
+                <article class="project-card" data-category="E-commerce">
+                    <div class="project-image">
+                        <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/51163eaf-71d6-48f3-b6a6-9ea7d3b56598.png" alt="1811stores" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="https://1811stores.com/" target="_blank" class="project-link">ПОСМОТРЕТЬ</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">E-commerce</span>
+                        <h3 class="project-name">1811stores</h3>
+                        <p class="project-description">Стильный онлайн-бутик одежды и аксессуаров. Современная e-commerce платформа с изысканным пользовательским опытом.</p>
+                    </div>
+                </article>
+
+                <!-- Sistema Clinic -->
+                <article class="project-card" data-category="Healthcare">
+                    <div class="project-image">
+                        <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/f6dda227-22c0-4efa-b30c-d0492aea4650.png" alt="Sistema Clinic" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="https://systemaclinica.ru/" target="_blank" class="project-link">ПОСМОТРЕТЬ</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Healthcare</span>
+                        <h3 class="project-name">Sistema Clinic</h3>
+                        <p class="project-description">Современная стоматологическая клиника с опытом 17+ лет. Комплексный медицинский сайт с презентацией услуг и профилями команды.</p>
+                    </div>
+                </article>
+
+                <!-- Quantum Clinic -->
+                <article class="project-card" data-category="Healthcare">
+                    <div class="project-image">
+                        <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/9401a330-6728-446b-affd-8eea264b55b2.png" alt="Quantum Clinic" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="https://quantum-clinic.ru/" target="_blank" class="project-link">ПОСМОТРЕТЬ</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Healthcare</span>
+                        <h3 class="project-name">Quantum Clinic</h3>
+                        <p class="project-description">Премиальная сеть косметологических клиник с 4 филиалами в Москве. Продвинутая платформа красоты с системой записи на процедуры.</p>
+                    </div>
+                </article>
+
+                <!-- Do Zarplati -->
+                <article class="project-card" data-category="Fintech">
+                    <div class="project-image">
+                        <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/ff8ab91c-9ff7-4528-99ae-07f0e7177186.png" alt="Do Zarplati" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="https://dozarplati.su/" target="_blank" class="project-link">ПОСМОТРЕТЬ</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Fintech</span>
+                        <h3 class="project-name">До Зарплаты</h3>
+                        <p class="project-description">Микрофинансовая организация, предоставляющая услуги аванса по зарплате. Удобная финансовая платформа с управлением займами.</p>
+                    </div>
+                </article>
+
+                <!-- BOCA Room -->
+                <article class="project-card" data-category="Interior">
+                    <div class="project-image">
+                        <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/cc975bd2-01ea-4a3b-bb4f-5ea423578723.png" alt="BOCA Room" loading="lazy">
+                        <div class="project-overlay">
+                            <a href="https://boca.su/" target="_blank" class="project-link">ПОСМОТРЕТЬ</a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Interior</span>
+                        <h3 class="project-name">BOCA Room</h3>
+                        <p class="project-description">Премиальный бренд дизайнерской мебели, предлагающий эксклюзивные интерьерные решения. Элегантный каталог люксовых мебельных коллекций.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="contact-title">Давайте<br><em>Сотрудничать</em></h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-label">Telegram</span>
+                        <a href="https://t.me/camilltear" target="_blank" class="contact-link">@camilltear</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Телефон</span>
+                        <a href="tel:+79521942944" class="contact-link">+7 (952) 194-29-44</a>
+                    </div>
+                </div>
+                <p class="contact-description">Свяжитесь с нами для обсуждения вашего проекта в области веб-разработки</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Carma. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
