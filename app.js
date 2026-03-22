@@ -35,7 +35,6 @@ function initTranslator() {
     });
   });
   currentLang = TRANSLATIONS[currentLang] ? currentLang : 'ru';
-  if (!['ru', 'en'].includes(currentLang)) currentLang = 'ru';
   document.documentElement.lang = LANG_CODES[currentLang] || 'ru';
   document.querySelector(`#langSwitcher .lang-btn[data-lang="${currentLang}"]`)?.classList.add('active');
   applyTranslations(currentLang);
@@ -380,15 +379,30 @@ function initBurger() {
   }
 }
 
-// Video fallback — если не загрузится, скрываем
+// Video fallback — при ошибке или таймауте скрываем видео, остаётся анимированный градиент
 document.addEventListener('DOMContentLoaded', () => {
   const video = document.querySelector('.hero-video');
-  if (video) {
-    video.addEventListener('error', () => { video.style.display = 'none'; });
+  const bg = document.querySelector('.hero-bg');
+  if (!video || !bg) return;
+
+  function hideVideo() {
+    video.style.display = 'none';
+    bg.classList.add('no-video');
   }
+
+  video.addEventListener('error', hideVideo);
+  video.addEventListener('emptied', hideVideo);
+  video.addEventListener('suspend', () => {
+    if (video.readyState < 2) hideVideo();
+  });
+
+  const t = setTimeout(() => {
+    if (video.readyState < 2) hideVideo();
+  }, 6000);
+  video.addEventListener('canplay', () => clearTimeout(t), { once: true });
 });
 
-// Contact form -> Telegram
+// Contact form: FormSubmit (email) + опционально Telegram API (Vercel)
 function initContactForm() {
   const form = document.getElementById('contactForm');
   const status = document.getElementById('formStatus');
@@ -402,17 +416,47 @@ function initContactForm() {
     status.textContent = '';
     status.className = 'form-status';
 
-    const api = form.dataset.api || (window.location.origin + '/api/contact');
-    const data = new FormData(form);
+    const formData = Object.fromEntries(new FormData(form));
+    const email = form.dataset.email;
+    const telegramApi = form.dataset.telegramApi || (window.location.origin + '/api/contact');
+    const t = TRANSLATIONS[currentLang] || TRANSLATIONS.ru;
+
+    const fsBody = {
+      _subject: 'Carma: новое сообщение с сайта',
+      _captcha: false,
+      ...formData
+    };
+
+    const headers = { 'Content-Type': 'application/json', 'Accept': 'application/json' };
+    let emailOk = false;
+    let telegramOk = false;
 
     try {
-      const r = await fetch(api, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(Object.fromEntries(data))
-      });
-      const t = TRANSLATIONS[currentLang] || TRANSLATIONS.ru;
-      if (r.ok) {
+      if (email) {
+        const r = await fetch(`https://formsubmit.co/ajax/${email}`, {
+          method: 'POST',
+          headers,
+          body: JSON.stringify(fsBody)
+        });
+        emailOk = r.ok;
+        if (!r.ok) {
+          const err = await r.json().catch(() => ({}));
+          console.warn('FormSubmit:', err);
+        }
+      }
+
+      if (telegramApi) {
+        try {
+          const tr = await fetch(telegramApi, {
+            method: 'POST',
+            headers,
+            body: JSON.stringify(formData)
+          });
+          telegramOk = tr.ok;
+        } catch (_) {}
+      }
+
+      if (emailOk || telegramOk) {
         status.textContent = t.form?.success || 'Отправлено!';
         status.classList.add('success');
         form.reset();
@@ -421,7 +465,8 @@ function initContactForm() {
         status.classList.add('error');
       }
     } catch (err) {
-      status.textContent = (TRANSLATIONS[currentLang] || TRANSLATIONS.ru).form?.error || 'Ошибка. Попробуйте позже.';
+      console.error(err);
+      status.textContent = t.form?.error || 'Ошибка. Попробуйте позже.';
       status.classList.add('error');
     }
     btn.disabled = false;

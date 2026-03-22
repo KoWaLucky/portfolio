@@ -14,6 +14,10 @@
     <div class="lang-switcher-fixed" id="langSwitcher">
         <button type="button" class="lang-btn active" data-lang="ru">RU</button>
         <button type="button" class="lang-btn" data-lang="en">EN</button>
+        <button type="button" class="lang-btn" data-lang="de">DE</button>
+        <button type="button" class="lang-btn" data-lang="es">ES</button>
+        <button type="button" class="lang-btn" data-lang="pt">PT</button>
+        <button type="button" class="lang-btn" data-lang="th">TH</button>
     </div>
 
     <!-- Navigation -->
@@ -34,7 +38,8 @@
     <!-- Hero Section -->
     <section id="hero" class="hero">
         <div class="hero-bg">
-            <video class="hero-video" autoplay muted loop playsinline>
+            <video class="hero-video" autoplay muted loop playsinline preload="auto">
+                <source src="https://assets.mixkit.co/videos/45378/45378-720.mp4" type="video/mp4">
                 <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-digital-network-connections-42480-0.mp4" type="video/mp4">
             </video>
             <div class="hero-particles" aria-hidden="true"></div>
@@ -210,7 +215,7 @@
                     </div>
                 </div>
                 <p class="contact-description" data-i18n="contact.description">Свяжитесь с нами для обсуждения вашего проекта в области веб-разработки</p>
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form" id="contactForm" data-email="qvick67@mail.ru">
                     <div class="form-row">
                         <label for="formName" data-i18n="form.name">Имя</label>
                         <input type="text" name="name" required class="form-input" id="formName" placeholder="">
@@ -225,6 +230,7 @@
                     </div>
                     <button type="submit" class="form-submit" data-i18n="form.send">Отправить</button>
                     <p class="form-status" id="formStatus"></p>
+                    <p class="form-hint" data-i18n="form.hint">При первом использовании проверьте почту — FormSubmit отправит ссылку подтверждения.</p>
                 </form>
             </div>
         </div>
