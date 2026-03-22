@@ -23,20 +23,21 @@ function applyTranslations(lang) {
 const LANG_CODES = { ru: 'ru', en: 'en', de: 'de', es: 'es', pt: 'pt', th: 'th' };
 
 function initTranslator() {
-  document.querySelectorAll('.lang-btn').forEach(btn => {
+  document.querySelectorAll('#langSwitcher .lang-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const lang = btn.dataset.lang;
       currentLang = TRANSLATIONS[lang] ? lang : 'ru';
       localStorage.setItem('carma-lang', currentLang);
       document.documentElement.lang = LANG_CODES[currentLang] || 'ru';
-      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('#langSwitcher .lang-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       applyTranslations(currentLang);
     });
   });
   currentLang = TRANSLATIONS[currentLang] ? currentLang : 'ru';
+  if (!['ru', 'en'].includes(currentLang)) currentLang = 'ru';
   document.documentElement.lang = LANG_CODES[currentLang] || 'ru';
-  document.querySelector(`.lang-btn[data-lang="${currentLang}"]`)?.classList.add('active');
+  document.querySelector(`#langSwitcher .lang-btn[data-lang="${currentLang}"]`)?.classList.add('active');
   applyTranslations(currentLang);
 }
 
@@ -55,14 +56,15 @@ let scrollTimeout;
 
 function handleNavScroll() {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    // Show/hide nav based on scroll direction
-    if (scrollTop > lastScrollTop && scrollTop > 100) {
+    const isMobile = window.innerWidth <= 768;
+
+    // На мобильных не скрываем nav — нужен доступ к меню
+    if (!isMobile && scrollTop > lastScrollTop && scrollTop > 100) {
         nav.classList.add('hidden');
     } else {
         nav.classList.remove('hidden');
     }
-    
+
     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 }
 
@@ -261,7 +263,7 @@ function addScrollToTop() {
     scrollToTopBtn.style.cssText = `
         position: fixed;
         bottom: 2rem;
-        right: 2rem;
+        left: 2rem;
         width: 50px;
         height: 50px;
         border: 1px solid var(--color-border);

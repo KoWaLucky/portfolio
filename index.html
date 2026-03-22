@@ -10,18 +10,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="preload">
+    <!-- Language switcher — правый нижний угол -->
+    <div class="lang-switcher-fixed" id="langSwitcher">
+        <button type="button" class="lang-btn active" data-lang="ru">RU</button>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+    </div>
+
     <!-- Navigation -->
     <nav class="nav" id="nav">
         <div class="nav-container">
             <a href="#hero" class="nav-logo">CARMA</a>
-            <div class="lang-switcher" id="langSwitcher">
-                <button type="button" class="lang-btn active" data-lang="ru">RU</button>
-                <button type="button" class="lang-btn" data-lang="en">EN</button>
-                <button type="button" class="lang-btn" data-lang="de">DE</button>
-                <button type="button" class="lang-btn" data-lang="es">ES</button>
-                <button type="button" class="lang-btn" data-lang="pt">PT</button>
-                <button type="button" class="lang-btn" data-lang="th">TH</button>
-            </div>
             <div class="nav-menu">
                 <a href="#about" data-i18n="nav.about">О НАС</a>
                 <a href="#portfolio" data-i18n="nav.portfolio">ПОРТФОЛИО</a>
@@ -36,16 +34,19 @@
     <!-- Hero Section -->
     <section id="hero" class="hero">
         <div class="hero-bg">
+            <!-- Для видео: <video class="hero-video" autoplay muted loop playsinline><source src="video.mp4" type="video/mp4"></video> -->
+            <div class="hero-particles" aria-hidden="true"></div>
+            <div class="hero-overlay"></div>
             <div class="hero-gradient"></div>
             <div class="hero-mesh"></div>
         </div>
         <div class="hero-container">
             <h1 class="hero-title"><span class="hero-title-line">Carma</span></h1>
             <p class="hero-subtitle" data-i18n="hero.subtitle">Создаём элегантные веб-решения,<br>объединяющие эстетику высокой моды<br>с передовыми технологиями</p>
-            <div class="hero-scroll">
-                <span data-i18n="hero.scroll">Листайте вниз</span>
-                <div class="scroll-indicator"></div>
-            </div>
+        </div>
+        <div class="hero-scroll">
+            <span data-i18n="hero.scroll">Листайте вниз</span>
+            <div class="scroll-indicator"></div>
         </div>
     </section>
 
