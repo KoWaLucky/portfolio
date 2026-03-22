@@ -34,7 +34,9 @@
     <!-- Hero Section -->
     <section id="hero" class="hero">
         <div class="hero-bg">
-            <!-- Для видео: <video class="hero-video" autoplay muted loop playsinline><source src="video.mp4" type="video/mp4"></video> -->
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-digital-network-connections-42480-0.mp4" type="video/mp4">
+            </video>
             <div class="hero-particles" aria-hidden="true"></div>
             <div class="hero-overlay"></div>
             <div class="hero-gradient"></div>
@@ -210,16 +212,16 @@
                 <p class="contact-description" data-i18n="contact.description">Свяжитесь с нами для обсуждения вашего проекта в области веб-разработки</p>
                 <form class="contact-form" id="contactForm">
                     <div class="form-row">
-                        <input type="text" name="name" required class="form-input" id="formName">
                         <label for="formName" data-i18n="form.name">Имя</label>
+                        <input type="text" name="name" required class="form-input" id="formName" placeholder="">
                     </div>
                     <div class="form-row">
-                        <input type="email" name="email" required class="form-input" id="formEmail">
                         <label for="formEmail" data-i18n="form.email">Email</label>
+                        <input type="email" name="email" required class="form-input" id="formEmail" placeholder="">
                     </div>
                     <div class="form-row">
-                        <textarea name="message" required class="form-input form-textarea" rows="4" id="formMessage"></textarea>
                         <label for="formMessage" data-i18n="form.message">Сообщение</label>
+                        <textarea name="message" required class="form-input form-textarea" rows="4" id="formMessage" placeholder=""></textarea>
                     </div>
                     <button type="submit" class="form-submit" data-i18n="form.send">Отправить</button>
                     <p class="form-status" id="formStatus"></p>

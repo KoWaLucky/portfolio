@@ -380,6 +380,14 @@ function initBurger() {
   }
 }
 
+// Video fallback — если не загрузится, скрываем
+document.addEventListener('DOMContentLoaded', () => {
+  const video = document.querySelector('.hero-video');
+  if (video) {
+    video.addEventListener('error', () => { video.style.display = 'none'; });
+  }
+});
+
 // Contact form -> Telegram
 function initContactForm() {
   const form = document.getElementById('contactForm');
