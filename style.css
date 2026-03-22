@@ -922,14 +922,18 @@ body {
     inset: 0;
     z-index: 0;
     background: 
-        radial-gradient(circle at 20% 80%, rgba(33, 128, 141, 0.2) 0%, transparent 45%),
-        radial-gradient(circle at 80% 20%, rgba(94, 82, 64, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 50% 50%, rgba(50, 184, 198, 0.12) 0%, transparent 55%);
+        radial-gradient(circle at 20% 80%, rgba(33, 128, 141, 0.25) 0%, transparent 45%),
+        radial-gradient(circle at 80% 20%, rgba(94, 82, 64, 0.18) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(50, 184, 198, 0.15) 0%, transparent 55%);
     animation: particlesFloat 12s ease-in-out infinite alternate;
 }
 
 .hero-bg.no-video .hero-particles {
-    animation-duration: 8s;
+    animation: particlesFloat 6s ease-in-out infinite alternate;
+}
+
+.hero-bg.no-video .hero-gradient {
+    animation: gradientShift 4s ease-in-out infinite alternate;
 }
 
 @keyframes particlesFloat {
@@ -1303,22 +1307,29 @@ body:not(.preload) .hero-scroll { animation: scrollReveal 0.9s cubic-bezier(0.16
     font-weight: 300;
 }
 
-/* Language switcher — правый нижний угол, все 6 языков видимы */
+/* Language switcher — правый нижний угол, ВСЕ 6 языков: RU EN DE ES PT TH */
 .lang-switcher-fixed {
     position: fixed;
     bottom: 1.5rem;
     right: 1.5rem;
     z-index: 1001;
     display: flex;
+    flex-wrap: nowrap;
     align-items: center;
-    gap: 0.25rem;
+    gap: 0.2rem;
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: var(--radius-full);
-    padding: 0.35rem 0.5rem;
+    padding: 0.3rem 0.5rem;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    overflow: visible;
+}
+
+.lang-switcher-fixed .lang-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -1329,9 +1340,9 @@ body:not(.preload) .hero-scroll { animation: scrollReveal 0.9s cubic-bezier(0.16
 }
 
 .lang-switcher-fixed .lang-btn {
-    font-size: 0.7rem;
-    padding: 0.35rem 0.5rem;
-    min-width: 2rem;
+    font-size: 0.65rem;
+    padding: 0.3rem 0.45rem;
+    min-width: 1.8rem;
 }
 
 .lang-switcher .lang-btn,
@@ -1620,15 +1631,14 @@ body.preload * {
     .lang-switcher-fixed {
         bottom: 1rem;
         right: 1rem;
-        padding: 0.3rem 0.4rem;
-        flex-wrap: nowrap;
-        max-width: none;
+        padding: 0.25rem 0.4rem;
+        gap: 0.15rem;
     }
 
     .lang-switcher-fixed .lang-btn {
         font-size: 0.6rem;
-        padding: 0.28rem 0.38rem;
-        min-width: 1.6rem;
+        padding: 0.25rem 0.35rem;
+        min-width: 1.5rem;
     }
     
     .about-content {

@@ -2,6 +2,7 @@
  * Переводы для портфолио Carma
  * RU / EN / DE / ES / PT / TH
  */
+// RU / EN / DE / ES / PT / TH
 const TRANSLATIONS = {
   ru: {
     title: 'Carma | Портфолио',
@@ -31,7 +32,7 @@ const TRANSLATIONS = {
       title: 'Давайте', titleEm: 'Сотрудничать', phone: 'Телефон',
       description: 'Свяжитесь с нами для обсуждения вашего проекта в области веб-разработки'
     },
-    form: { name: 'Имя', email: 'Email', message: 'Сообщение', send: 'Отправить', success: 'Отправлено!', error: 'Ошибка. Попробуйте позже.' },
+    form: { name: 'Имя', email: 'Email', message: 'Сообщение', send: 'Отправить', success: 'Отправлено!', error: 'Ошибка. Попробуйте позже.', hint: 'При первом использовании проверьте почту — FormSubmit отправит ссылку подтверждения.' },
     footer: '© 2025 Carma. Все права защищены.'
   },
   en: {
@@ -62,7 +63,7 @@ const TRANSLATIONS = {
       title: "Let's", titleEm: 'Collaborate', phone: 'Phone',
       description: 'Contact us to discuss your web development project'
     },
-    form: { name: 'Name', email: 'Email', message: 'Message', send: 'Send', success: 'Sent!', error: 'Error. Try again later.' },
+    form: { name: 'Name', email: 'Email', message: 'Message', send: 'Send', success: 'Sent!', error: 'Error. Try again later.', hint: 'On first use, check your email — FormSubmit will send a confirmation link.' },
     footer: '© 2025 Carma. All rights reserved.'
   },
   de: {
@@ -93,7 +94,7 @@ const TRANSLATIONS = {
       title: 'Lassen Sie uns', titleEm: 'zusammenarbeiten', phone: 'Telefon',
       description: 'Kontaktieren Sie uns für Ihr Webentwicklungsprojekt'
     },
-    form: { name: 'Name', email: 'E-Mail', message: 'Nachricht', send: 'Senden', success: 'Gesendet!', error: 'Fehler. Bitte später erneut versuchen.' },
+    form: { name: 'Name', email: 'E-Mail', message: 'Nachricht', send: 'Senden', success: 'Gesendet!', error: 'Fehler. Bitte später erneut versuchen.', hint: 'Bei erstem Gebrauch E-Mail prüfen — FormSubmit sendet einen Bestätigungslink.' },
     footer: '© 2025 Carma. Alle Rechte vorbehalten.'
   },
   es: {
@@ -124,7 +125,7 @@ const TRANSLATIONS = {
       title: 'Hablemos', titleEm: 'para colaborar', phone: 'Teléfono',
       description: 'Contáctenos para su proyecto de desarrollo web'
     },
-    form: { name: 'Nombre', email: 'Email', message: 'Mensaje', send: 'Enviar', success: '¡Enviado!', error: 'Error. Intente más tarde.' },
+    form: { name: 'Nombre', email: 'Email', message: 'Mensaje', send: 'Enviar', success: '¡Enviado!', error: 'Error. Intente más tarde.', hint: 'En el primer uso, revise su correo — FormSubmit enviará un enlace de confirmación.' },
     footer: '© 2025 Carma. Todos los derechos reservados.'
   },
   pt: {
@@ -155,7 +156,7 @@ const TRANSLATIONS = {
       title: 'Vamos', titleEm: 'colaborar', phone: 'Telefone',
       description: 'Entre em contato para seu projeto de desenvolvimento web'
     },
-    form: { name: 'Nome', email: 'Email', message: 'Mensagem', send: 'Enviar', success: 'Enviado!', error: 'Erro. Tente novamente.' },
+    form: { name: 'Nome', email: 'Email', message: 'Mensagem', send: 'Enviar', success: 'Enviado!', error: 'Erro. Tente novamente.', hint: 'Na primeira vez, verifique seu e-mail — FormSubmit enviará um link de confirmação.' },
     footer: '© 2025 Carma. Todos os direitos reservados.'
   },
   th: {
@@ -186,7 +187,7 @@ const TRANSLATIONS = {
       title: 'มา', titleEm: 'ร่วมงานกัน', phone: 'โทรศัพท์',
       description: 'ติดต่อเราเพื่อโปรเจกต์พัฒนาเว็บของคุณ'
     },
-    form: { name: 'ชื่อ', email: 'อีเมล', message: 'ข้อความ', send: 'ส่ง', success: 'ส่งแล้ว!', error: 'เกิดข้อผิดพลาด กรุณาลองใหม่' },
+    form: { name: 'ชื่อ', email: 'อีเมล', message: 'ข้อความ', send: 'ส่ง', success: 'ส่งแล้ว!', error: 'เกิดข้อผิดพลาด กรุณาลองใหม่', hint: 'ครั้งแรก โปรดตรวจสอบอีเมล — FormSubmit จะส่งลิงก์ยืนยัน' },
     footer: '© 2025 Carma. สงวนลิขสิทธิ์'
   }
 };
