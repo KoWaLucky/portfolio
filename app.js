@@ -125,28 +125,22 @@ function createFadeInObserver() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('visible');
             }
         });
-    }, observerOptions);
+    }, { root: null, rootMargin: '-50px 0px -50px 0px', threshold: 0.1 });
 
-    // Observe sections for fade-in animation
     const sectionsToObserve = [aboutSection, portfolioSection, contactSection];
     sectionsToObserve.forEach(section => {
         if (section) {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(50px)';
-            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            section.classList.add('animate-in');
             observer.observe(section);
         }
     });
 
-    // Observe project cards for staggered animation
     projectCards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        card.classList.add('animate-in');
+        card.style.transitionDelay = `${index * 0.08}s`;
         observer.observe(card);
     });
 }
@@ -359,13 +353,34 @@ function optimizePerformance() {
     window.addEventListener('scroll', updateActiveNavLink, { passive: true });
 }
 
+// Remove preload for entrance animations
+function initPreload() {
+  requestAnimationFrame(() => {
+    document.body.classList.remove('preload');
+  });
+}
+
+// Burger menu (mobile)
+function initBurger() {
+  const burger = document.getElementById('navBurger');
+  const nav = document.getElementById('nav');
+  if (burger && nav) {
+    burger.addEventListener('click', () => {
+      nav.classList.toggle('open');
+      document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+    });
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => nav.classList.remove('open'));
+    });
+  }
+}
+
 // Main initialization function
 function init() {
- // Initialize translator first (needs TRANSLATIONS from translations.js)
- if (typeof initTranslator === 'function') initTranslator();
- 
- // Initialize navigation
- initNavigation();
+  initPreload();
+  initBurger();
+  if (typeof initTranslator === 'function') initTranslator();
+  initNavigation();
     
     // Initialize animations and effects
     createFadeInObserver();

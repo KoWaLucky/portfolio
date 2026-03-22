@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="title">Carma | Портфолио</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="preload">
     <!-- Language Switcher -->
     <div class="lang-switcher" id="langSwitcher">
         <button type="button" class="lang-btn active" data-lang="ru" aria-label="Русский">RU</button>
@@ -24,13 +24,20 @@
                 <a href="#portfolio" data-i18n="nav.portfolio">ПОРТФОЛИО</a>
                 <a href="#contact" data-i18n="nav.contact">КОНТАКТЫ</a>
             </div>
+            <button class="nav-burger" type="button" aria-label="Menu" id="navBurger">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="hero" class="hero">
+        <div class="hero-bg">
+            <div class="hero-gradient"></div>
+            <div class="hero-mesh"></div>
+        </div>
         <div class="hero-container">
-            <h1 class="hero-title">Carma<br></h1>
+            <h1 class="hero-title"><span class="hero-title-line">Carma</span></h1>
             <p class="hero-subtitle" data-i18n="hero.subtitle">Создаём элегантные веб-решения,<br>объединяющие эстетику высокой моды<br>с передовыми технологиями</p>
             <div class="hero-scroll">
                 <span data-i18n="hero.scroll">Листайте вниз</span>
