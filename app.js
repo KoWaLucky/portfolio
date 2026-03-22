@@ -20,19 +20,22 @@ function applyTranslations(lang) {
   });
 }
 
+const LANG_CODES = { ru: 'ru', en: 'en', de: 'de', es: 'es', pt: 'pt', th: 'th' };
+
 function initTranslator() {
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const lang = btn.dataset.lang;
-      currentLang = lang;
-      localStorage.setItem('carma-lang', lang);
-      document.documentElement.lang = lang === 'en' ? 'en' : 'ru';
+      currentLang = TRANSLATIONS[lang] ? lang : 'ru';
+      localStorage.setItem('carma-lang', currentLang);
+      document.documentElement.lang = LANG_CODES[currentLang] || 'ru';
       document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      applyTranslations(lang);
+      applyTranslations(currentLang);
     });
   });
-  document.documentElement.lang = currentLang === 'en' ? 'en' : 'ru';
+  currentLang = TRANSLATIONS[currentLang] ? currentLang : 'ru';
+  document.documentElement.lang = LANG_CODES[currentLang] || 'ru';
   document.querySelector(`.lang-btn[data-lang="${currentLang}"]`)?.classList.add('active');
   applyTranslations(currentLang);
 }
@@ -375,11 +378,53 @@ function initBurger() {
   }
 }
 
+// Contact form -> Telegram
+function initContactForm() {
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+  if (!form || !status) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('.form-submit');
+    const origText = btn.textContent;
+    btn.disabled = true;
+    status.textContent = '';
+    status.className = 'form-status';
+
+    const api = form.dataset.api || (window.location.origin + '/api/contact');
+    const data = new FormData(form);
+
+    try {
+      const r = await fetch(api, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(data))
+      });
+      const t = TRANSLATIONS[currentLang] || TRANSLATIONS.ru;
+      if (r.ok) {
+        status.textContent = t.form?.success || 'Отправлено!';
+        status.classList.add('success');
+        form.reset();
+      } else {
+        status.textContent = t.form?.error || 'Ошибка. Попробуйте позже.';
+        status.classList.add('error');
+      }
+    } catch (err) {
+      status.textContent = (TRANSLATIONS[currentLang] || TRANSLATIONS.ru).form?.error || 'Ошибка. Попробуйте позже.';
+      status.classList.add('error');
+    }
+    btn.disabled = false;
+    btn.textContent = origText;
+  });
+}
+
 // Main initialization function
 function init() {
   initPreload();
   initBurger();
   if (typeof initTranslator === 'function') initTranslator();
+  initContactForm();
   initNavigation();
     
     // Initialize animations and effects

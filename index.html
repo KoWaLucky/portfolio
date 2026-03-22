@@ -4,21 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="title">Carma | Портфолио</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="preload">
-    <!-- Language Switcher -->
-    <div class="lang-switcher" id="langSwitcher">
-        <button type="button" class="lang-btn active" data-lang="ru" aria-label="Русский">RU</button>
-        <span class="lang-divider">|</span>
-        <button type="button" class="lang-btn" data-lang="en" aria-label="English">EN</button>
-    </div>
-
     <!-- Navigation -->
     <nav class="nav" id="nav">
         <div class="nav-container">
             <a href="#hero" class="nav-logo">CARMA</a>
+            <div class="lang-switcher" id="langSwitcher">
+                <button type="button" class="lang-btn active" data-lang="ru">RU</button>
+                <button type="button" class="lang-btn" data-lang="en">EN</button>
+                <button type="button" class="lang-btn" data-lang="de">DE</button>
+                <button type="button" class="lang-btn" data-lang="es">ES</button>
+                <button type="button" class="lang-btn" data-lang="pt">PT</button>
+                <button type="button" class="lang-btn" data-lang="th">TH</button>
+            </div>
             <div class="nav-menu">
                 <a href="#about" data-i18n="nav.about">О НАС</a>
                 <a href="#portfolio" data-i18n="nav.portfolio">ПОРТФОЛИО</a>
@@ -204,6 +207,22 @@
                     </div>
                 </div>
                 <p class="contact-description" data-i18n="contact.description">Свяжитесь с нами для обсуждения вашего проекта в области веб-разработки</p>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <input type="text" name="name" required class="form-input" id="formName">
+                        <label for="formName" data-i18n="form.name">Имя</label>
+                    </div>
+                    <div class="form-row">
+                        <input type="email" name="email" required class="form-input" id="formEmail">
+                        <label for="formEmail" data-i18n="form.email">Email</label>
+                    </div>
+                    <div class="form-row">
+                        <textarea name="message" required class="form-input form-textarea" rows="4" id="formMessage"></textarea>
+                        <label for="formMessage" data-i18n="form.message">Сообщение</label>
+                    </div>
+                    <button type="submit" class="form-submit" data-i18n="form.send">Отправить</button>
+                    <p class="form-status" id="formStatus"></p>
+                </form>
             </div>
         </div>
     </section>
