@@ -1,3 +1,42 @@
+// ========== i18n Translator ==========
+let currentLang = localStorage.getItem('carma-lang') || 'ru';
+
+function getNested(obj, path) {
+  return path.split('.').reduce((o, k) => (o && o[k]), obj);
+}
+
+function applyTranslations(lang) {
+  const t = TRANSLATIONS[lang] || TRANSLATIONS.ru;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const val = getNested(t, key);
+    if (val !== undefined) {
+      if (el.tagName === 'TITLE') {
+        document.title = val;
+      } else {
+        el.innerHTML = val;
+      }
+    }
+  });
+}
+
+function initTranslator() {
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = btn.dataset.lang;
+      currentLang = lang;
+      localStorage.setItem('carma-lang', lang);
+      document.documentElement.lang = lang === 'en' ? 'en' : 'ru';
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyTranslations(lang);
+    });
+  });
+  document.documentElement.lang = currentLang === 'en' ? 'en' : 'ru';
+  document.querySelector(`.lang-btn[data-lang="${currentLang}"]`)?.classList.add('active');
+  applyTranslations(currentLang);
+}
+
 // DOM Elements
 const nav = document.getElementById('nav');
 const heroSection = document.getElementById('hero');
@@ -193,14 +232,12 @@ function setupImageLoading() {
 
 // Contact links enhancement
 function enhanceContactLinks() {
-    const telegramLink = document.querySelector('a[href*="t.me"]');
-    const phoneLink = document.querySelector('a[href*="tel:"]');
-    
-    [telegramLink, phoneLink].forEach(link => {
-        if (link) {
-            link.style.transition = 'all 0.3s ease';
-            
-            link.addEventListener('click', (e) => {
+ const links = document.querySelectorAll('.contact-link');
+ 
+ links.forEach(link => {
+ if (link) {
+   link.style.transition = 'all 0.3s ease';
+   link.addEventListener('click', (e) => {
                 // Add click animation
                 link.style.transform = 'scale(0.95)';
                 setTimeout(() => {
@@ -212,11 +249,11 @@ function enhanceContactLinks() {
                 link.style.transform = 'translateY(-2px)';
             });
             
-            link.addEventListener('mouseleave', () => {
-                link.style.transform = 'translateY(0)';
-            });
-        }
-    });
+ link.addEventListener('mouseleave', () => {
+   link.style.transform = 'translateY(0)';
+ });
+ }
+ });
 }
 
 // Scroll to top functionality
@@ -324,10 +361,11 @@ function optimizePerformance() {
 
 // Main initialization function
 function init() {
-    console.log('Initializing portfolio application...'); // Debug log
-    
-    // Initialize navigation first
-    initNavigation();
+ // Initialize translator first (needs TRANSLATIONS from translations.js)
+ if (typeof initTranslator === 'function') initTranslator();
+ 
+ // Initialize navigation
+ initNavigation();
     
     // Initialize animations and effects
     createFadeInObserver();
