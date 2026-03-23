@@ -407,21 +407,14 @@ document.addEventListener('DOMContentLoaded', () => {
   video.play().catch(() => {});
 });
 
-// Contact form: Formspree → Telegram (formspree.io → Plugins → Telegram)
+// Contact form → /api/contact → Telegram (твой код на Vercel, без сторонних сервисов)
 function initContactForm() {
   const form = document.getElementById('contactForm');
   const status = document.getElementById('formStatus');
   if (!form || !status) return;
 
-  const formspreeId = (form.dataset.formspree || '').trim();
-
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    if (!formspreeId || formspreeId === 'YOUR_FORM_ID') {
-      status.textContent = 'Укажи data-formspree="твой_id" в форме. formspree.io';
-      status.classList.add('error');
-      return;
-    }
 
     const btn = form.querySelector('.form-submit');
     const origText = btn.textContent;
@@ -430,13 +423,14 @@ function initContactForm() {
     status.className = 'form-status';
 
     const t = TRANSLATIONS[currentLang] || TRANSLATIONS.ru;
-    const data = new FormData(form);
+    const formData = Object.fromEntries(new FormData(form));
+    const url = `${window.location.origin}/api/contact`;
 
     try {
-      const r = await fetch(`https://formspree.io/f/${formspreeId}`, {
+      const r = await fetch(url, {
         method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(formData)
       });
 
       if (r.ok) {
@@ -445,11 +439,11 @@ function initContactForm() {
         form.reset();
       } else {
         const err = await r.json().catch(() => ({}));
-        status.textContent = err?.error || t.form?.error || 'Ошибка. Попробуйте позже.';
+        status.textContent = err?.error || t.form?.error || 'Ошибка. Деплой на Vercel?';
         status.classList.add('error');
       }
     } catch (err) {
-      status.textContent = t.form?.error || 'Ошибка. Попробуйте позже.';
+      status.textContent = t.form?.error || 'Ошибка. Деплой на Vercel?';
       status.classList.add('error');
     }
     btn.disabled = false;

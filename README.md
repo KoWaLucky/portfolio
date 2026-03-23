@@ -1,18 +1,22 @@
 # Carma Portfolio
 
-## Форма контакта
+## Форма → Telegram (без сторонних сервисов)
 
-**Сейчас:** форма отправляет письма на `qvick67@mail.ru` через FormSubmit (бесплатно, без регистрации).
+Форма отправляет сообщения напрямую в твой Telegram через твой же бот. Нет Formspree, FormSubmit и т.п.
 
-⚠️ **Первый раз:** FormSubmit пришлёт письмо с подтверждением на этот email — перейди по ссылке один раз, после этого форма будет работать.
+### Как настроить
 
-## Уведомления в Telegram
+1. **Деплой на Vercel**
+   - Зайди на [vercel.com](https://vercel.com) → Import Git Repository → выбери `KoWaLucky/portfolio`
+   - Или: `vercel` в терминале из папки проекта
 
-Чтобы сообщения с сайта приходили в Telegram:
+2. **Добавь переменные окружения** (Vercel → Project → Settings → Environment Variables):
+   - `TELEGRAM_BOT_TOKEN` — токен от [@BotFather](https://t.me/BotFather)
+   - `TELEGRAM_CHAT_ID` — свой ID (можно узнать у [@userinfobot](https://t.me/userinfobot))
 
-1. Задеплой проект на **Vercel** (импорт из GitHub)
-2. Добавь переменные: `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`
-3. Укажи в форме: `data-api="https://твой-проект.vercel.app/api/contact"`
+3. Готово. Форма на `твой-проект.vercel.app` будет отправлять сообщения в Telegram.
+
+> На GitHub Pages форма не работает (там нет сервера). Нужен Vercel (бесплатно).
 
 ## Языки
 

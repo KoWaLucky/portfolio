@@ -32,7 +32,7 @@ const TRANSLATIONS = {
       title: 'Давайте', titleEm: 'Сотрудничать', phone: 'Телефон',
       description: 'Свяжитесь с нами для обсуждения вашего проекта в области веб-разработки'
     },
-    form: { name: 'Имя', email: 'Email', message: 'Сообщение', send: 'Отправить', success: 'Отправлено!', error: 'Ошибка. Попробуйте позже.', hint: 'Сообщения приходят в Telegram. formspree.io → Plugins → Telegram.' },
+    form: { name: 'Имя', email: 'Email', message: 'Сообщение', send: 'Отправить', success: 'Отправлено!', error: 'Ошибка. Попробуйте позже.', hint: 'Сообщения приходят в Telegram (деплой на Vercel).' },
     footer: '© 2025 Carma. Все права защищены.'
   },
   en: {
@@ -63,7 +63,7 @@ const TRANSLATIONS = {
       title: "Let's", titleEm: 'Collaborate', phone: 'Phone',
       description: 'Contact us to discuss your web development project'
     },
-    form: { name: 'Name', email: 'Email', message: 'Message', send: 'Send', success: 'Sent!', error: 'Error. Try again later.', hint: 'Messages go to Telegram. formspree.io → Plugins → Telegram.' },
+    form: { name: 'Name', email: 'Email', message: 'Message', send: 'Send', success: 'Sent!', error: 'Error. Try again later.', hint: 'Messages go to Telegram (deploy on Vercel).' },
     footer: '© 2025 Carma. All rights reserved.'
   },
   de: {
@@ -94,7 +94,7 @@ const TRANSLATIONS = {
       title: 'Lassen Sie uns', titleEm: 'zusammenarbeiten', phone: 'Telefon',
       description: 'Kontaktieren Sie uns für Ihr Webentwicklungsprojekt'
     },
-    form: { name: 'Name', email: 'E-Mail', message: 'Nachricht', send: 'Senden', success: 'Gesendet!', error: 'Fehler. Bitte später erneut versuchen.', hint: 'Nachrichten gehen an Telegram. formspree.io → Plugins → Telegram.' },
+    form: { name: 'Name', email: 'E-Mail', message: 'Nachricht', send: 'Senden', success: 'Gesendet!', error: 'Fehler. Bitte später erneut versuchen.', hint: 'Nachrichten gehen an Telegram (Vercel-Deploy).' },
     footer: '© 2025 Carma. Alle Rechte vorbehalten.'
   },
   es: {
@@ -125,7 +125,7 @@ const TRANSLATIONS = {
       title: 'Hablemos', titleEm: 'para colaborar', phone: 'Teléfono',
       description: 'Contáctenos para su proyecto de desarrollo web'
     },
-    form: { name: 'Nombre', email: 'Email', message: 'Mensaje', send: 'Enviar', success: '¡Enviado!', error: 'Error. Intente más tarde.', hint: 'Los mensajes van a Telegram. formspree.io → Plugins → Telegram.' },
+    form: { name: 'Nombre', email: 'Email', message: 'Mensaje', send: 'Enviar', success: '¡Enviado!', error: 'Error. Intente más tarde.', hint: 'Los mensajes van a Telegram (deploy en Vercel).' },
     footer: '© 2025 Carma. Todos los derechos reservados.'
   },
   pt: {
@@ -156,7 +156,7 @@ const TRANSLATIONS = {
       title: 'Vamos', titleEm: 'colaborar', phone: 'Telefone',
       description: 'Entre em contato para seu projeto de desenvolvimento web'
     },
-    form: { name: 'Nome', email: 'Email', message: 'Mensagem', send: 'Enviar', success: 'Enviado!', error: 'Erro. Tente novamente.', hint: 'As mensagens vão para o Telegram. formspree.io → Plugins → Telegram.' },
+    form: { name: 'Nome', email: 'Email', message: 'Mensagem', send: 'Enviar', success: 'Enviado!', error: 'Erro. Tente novamente.', hint: 'As mensagens vão para o Telegram (deploy no Vercel).' },
     footer: '© 2025 Carma. Todos os direitos reservados.'
   },
   th: {
@@ -187,7 +187,7 @@ const TRANSLATIONS = {
       title: 'มา', titleEm: 'ร่วมงานกัน', phone: 'โทรศัพท์',
       description: 'ติดต่อเราเพื่อโปรเจกต์พัฒนาเว็บของคุณ'
     },
-    form: { name: 'ชื่อ', email: 'อีเมล', message: 'ข้อความ', send: 'ส่ง', success: 'ส่งแล้ว!', error: 'เกิดข้อผิดพลาด กรุณาลองใหม่', hint: 'ข้อความไปที่ Telegram formspree.io → Plugins → Telegram' },
+    form: { name: 'ชื่อ', email: 'อีเมล', message: 'ข้อความ', send: 'ส่ง', success: 'ส่งแล้ว!', error: 'เกิดข้อผิดพลาด กรุณาลองใหม่', hint: 'ข้อความไปที่ Telegram (deploy บน Vercel)' },
     footer: '© 2025 Carma. สงวนลิขสิทธิ์'
   }
 };

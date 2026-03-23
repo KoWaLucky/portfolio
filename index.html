@@ -214,8 +214,8 @@
                     </div>
                 </div>
                 <p class="contact-description" data-i18n="contact.description">Свяжитесь с нами для обсуждения вашего проекта в области веб-разработки</p>
-                <!-- Formspree: formspree.io → создать форму → Plugins → Telegram. Подставь свой ID вместо YOUR_FORM_ID -->
-                <form class="contact-form" id="contactForm" data-formspree="YOUR_FORM_ID">
+                <!-- Форма → /api/contact → Telegram. Деплой на Vercel + env: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID -->
+                <form class="contact-form" id="contactForm">
                     <input type="hidden" name="subject" value="Carma: новое сообщение">
                     <div class="form-row">
                         <label for="formName" data-i18n="form.name">Имя</label>
@@ -231,7 +231,7 @@
                     </div>
                     <button type="submit" class="form-submit" data-i18n="form.send">Отправить</button>
                     <p class="form-status" id="formStatus"></p>
-                    <p class="form-hint" data-i18n="form.hint">Сообщения приходят в Telegram. Настрой: formspree.io → Plugins → Telegram.</p>
+                    <p class="form-hint" data-i18n="form.hint">Сообщения приходят в Telegram (деплой на Vercel).</p>
                 </form>
             </div>
         </div>
