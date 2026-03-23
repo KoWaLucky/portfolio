@@ -216,7 +216,9 @@
                     </div>
                 </div>
                 <p class="contact-description" data-i18n="contact.description">Свяжитесь с нами для обсуждения вашего проекта в области веб-разработки</p>
-                <form class="contact-form" id="contactForm" data-email="qvick67@mail.ru">
+                <!-- Formspree: formspree.io → создать форму → Plugins → Telegram. Подставь свой ID вместо YOUR_FORM_ID -->
+                <form class="contact-form" id="contactForm" data-formspree="YOUR_FORM_ID">
+                    <input type="hidden" name="subject" value="Carma: новое сообщение">
                     <div class="form-row">
                         <label for="formName" data-i18n="form.name">Имя</label>
                         <input type="text" name="name" required class="form-input" id="formName" placeholder="">
@@ -231,7 +233,7 @@
                     </div>
                     <button type="submit" class="form-submit" data-i18n="form.send">Отправить</button>
                     <p class="form-status" id="formStatus"></p>
-                    <p class="form-hint" data-i18n="form.hint">При первом использовании проверьте почту — FormSubmit отправит ссылку подтверждения.</p>
+                    <p class="form-hint" data-i18n="form.hint">Сообщения приходят в Telegram. Настрой: formspree.io → Plugins → Telegram.</p>
                 </form>
             </div>
         </div>

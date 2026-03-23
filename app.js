@@ -379,11 +379,14 @@ function initBurger() {
   }
 }
 
-// Video fallback — при ошибке или таймауте скрываем видео, остаётся анимированный градиент
+// Video fallback — при ошибке или таймауте скрываем видео. На мобилке даём больше времени на загрузку
 document.addEventListener('DOMContentLoaded', () => {
   const video = document.querySelector('.hero-video');
   const bg = document.querySelector('.hero-bg');
   if (!video || !bg) return;
+
+  const isMobile = window.innerWidth < 768 || 'ontouchstart' in window;
+  const timeout = isMobile ? 12000 : 6000;
 
   function hideVideo() {
     video.style.display = 'none';
@@ -398,74 +401,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const t = setTimeout(() => {
     if (video.readyState < 2) hideVideo();
-  }, 6000);
+  }, timeout);
   video.addEventListener('canplay', () => clearTimeout(t), { once: true });
+
+  video.play().catch(() => {});
 });
 
-// Contact form: FormSubmit (email) + опционально Telegram API (Vercel)
+// Contact form: Formspree → Telegram (formspree.io → Plugins → Telegram)
 function initContactForm() {
   const form = document.getElementById('contactForm');
   const status = document.getElementById('formStatus');
   if (!form || !status) return;
 
+  const formspreeId = (form.dataset.formspree || '').trim();
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    if (!formspreeId || formspreeId === 'YOUR_FORM_ID') {
+      status.textContent = 'Укажи data-formspree="твой_id" в форме. formspree.io';
+      status.classList.add('error');
+      return;
+    }
+
     const btn = form.querySelector('.form-submit');
     const origText = btn.textContent;
     btn.disabled = true;
     status.textContent = '';
     status.className = 'form-status';
 
-    const formData = Object.fromEntries(new FormData(form));
-    const email = form.dataset.email;
-    const telegramApi = form.dataset.telegramApi || (window.location.origin + '/api/contact');
     const t = TRANSLATIONS[currentLang] || TRANSLATIONS.ru;
-
-    const fsBody = {
-      _subject: 'Carma: новое сообщение с сайта',
-      _captcha: false,
-      ...formData
-    };
-
-    const headers = { 'Content-Type': 'application/json', 'Accept': 'application/json' };
-    let emailOk = false;
-    let telegramOk = false;
+    const data = new FormData(form);
 
     try {
-      if (email) {
-        const r = await fetch(`https://formsubmit.co/ajax/${email}`, {
-          method: 'POST',
-          headers,
-          body: JSON.stringify(fsBody)
-        });
-        emailOk = r.ok;
-        if (!r.ok) {
-          const err = await r.json().catch(() => ({}));
-          console.warn('FormSubmit:', err);
-        }
-      }
+      const r = await fetch(`https://formspree.io/f/${formspreeId}`, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
 
-      if (telegramApi) {
-        try {
-          const tr = await fetch(telegramApi, {
-            method: 'POST',
-            headers,
-            body: JSON.stringify(formData)
-          });
-          telegramOk = tr.ok;
-        } catch (_) {}
-      }
-
-      if (emailOk || telegramOk) {
+      if (r.ok) {
         status.textContent = t.form?.success || 'Отправлено!';
         status.classList.add('success');
         form.reset();
       } else {
-        status.textContent = t.form?.error || 'Ошибка. Попробуйте позже.';
+        const err = await r.json().catch(() => ({}));
+        status.textContent = err?.error || t.form?.error || 'Ошибка. Попробуйте позже.';
         status.classList.add('error');
       }
     } catch (err) {
-      console.error(err);
       status.textContent = t.form?.error || 'Ошибка. Попробуйте позже.';
       status.classList.add('error');
     }
